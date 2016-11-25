@@ -1,5 +1,17 @@
 <div id="quote" class="text-center">
-  <h2><%= @tweet.text %></h2>
+  <div id="words">
+    <% @tweet.text.split(' ').each do |word| %>
+      <% if word.starts_with?('@') %>
+        <a href="http://twitter.com/<%= word %>"><%= word %></a>
+      <% elsif word.starts_with?('#') %>
+        <a href="http://twitter.com/search?q=<%= URI.encode word %>"><%= word %></a>
+      <% elsif word.starts_with?('http') %>
+        <a href="<%= word %>"><%= word %></a>
+      <% else %>
+        <%= word %>
+      <% end %>
+    <% end %>
+  </div>
   <br>
   <h4><a href="https://twitter.com/<%= @tweet.user.screen_name %>">@<%= @tweet.user.screen_name %></a></h4>
   <br>
