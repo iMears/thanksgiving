@@ -1,5 +1,8 @@
 <div id="quote" class="text-center">
+  <button onClick="reload()" class="btn btn-default">I'm thankful for...</button>
+  <br><br>
   <h2><%= @tweet.text %></h2>
   <br>
   <h4><a href="https://twitter.com/<%= @tweet.user.screen_name %>">@<%= @tweet.user.screen_name %></a></h4>
+  <br>
 </div>
